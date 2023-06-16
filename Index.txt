@@ -1,0 +1,109 @@
+<body>
+
+//<h3>Front Page</h3>
+    <link rel="stylesheet" href="~/Content/index.css">
+
+    <section>
+        <h2>Featured Products</h2>
+        <div class="product-container">
+
+
+
+            <div class="product">
+                <div class="product-img-card">
+                    <img class="product-img" src="@Model[0].ImageUrl" alt="@Model[0].Name">
+                </div>
+                    <div>
+                    <h3>@Model[0].Name</h3>
+                    <p>@Model[0].Description</p>
+                    <p>Price:@Model[0].Price</p>
+                    <div>rating: @Model[0].Rating/10</div>
+                </div>
+            </div>
+
+            @*<div class="product">
+            <img src="@Model[0].ImageUrl" alt="@Model[0].Name" class="product-image">
+            <div>
+                <h3>@Model[0].Price</h3>
+                <p>@Model[0].Description</p>
+                <p class="product-cost">MRP:@Model[0].Price</p>
+                <div>rating: @Model[0].Rating/10</div>
+            </div>
+        </div>*@
+
+
+
+
+            <div class="product">
+                <div class="product-img-card">
+                    <img class="product-img" src="@Model[1].ImageUrl" alt="@Model[1].Name">
+                </div>
+                <div>
+                    <h3>@Model[1].Name</h3>
+                    <p>@Model[1].Description</p>
+                    <p>Price:@Model[1].Price</p>
+                    <div>rating: @Model[1].Rating/10</div>
+                </div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-card">
+                    <img class="product-img" src="@Model[2].ImageUrl" alt="@Model[2].Name">
+                </div>
+                <div>
+                    <h3>@Model[2].Name</h3>
+                    <p>@Model[2].Description</p>
+                    <p>Price:@Model[2].Price</p>
+                    <div>rating: @Model[2].Rating/10</div>
+                </div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-card">
+                    <img class="product-img" src="@Model[3].ImageUrl" alt="@Model[3].Name">
+                </div>
+                <div>
+                    <h3>@Model[3].Name</h3>
+                    <p>@Model[3].Description</p>
+                    <p>Price:@Model[3].Price</p>
+                    <div>rating: @Model[3].Rating/10</div>
+                </div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-card">
+                    <img class="product-img" src="@Model[4].ImageUrl" alt="@Model[4].Name">
+                </div>
+                <div>
+                    <h3>@Model[4].Name</h3>
+                    <p>@Model[4].Description</p>
+                    <p>Price:@Model[4].Price</p>
+                    <div>rating: @Model[4].Rating/10</div>
+                </div>
+            </div>
+
+            <div class="product">
+                <div class="product-img-card">
+                    <img class="product-img" src="@Model[5].ImageUrl" alt="@Model[5].Name">
+                </div>
+                <div>
+                    <h3>@Model[5].Name</h3>
+                    <p>@Model[5].Description</p>
+                    <p>Price:@Model[5].Price</p>
+                    <div>rating: @Model[5].Rating/10</div>
+                </div>
+            </div>
+
+         @*   <div class="product">
+                <img class="product-img" src="product2.jpg" alt="Product 2">
+                <div>
+                    <h3>Product 2</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse euismod est sed nunc posuere ullamcorper.</p>
+                    <p>Price: $29.99</p>
+                </div>
+            </div>*@
+
+        </div>
+    </section>
+
+</body>

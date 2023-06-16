@@ -1,0 +1,38 @@
+
+    <link rel="stylesheet" href="~/Content/Login_Style.css">
+    <body>
+        <div class="logincontainer">
+            <h2>SignUp</h2>
+            <form action="/Signup/Register" method="post">
+                <div class="form-group">
+                    <label for="username">Name:</label>
+                    <input type="text" id="username" name="username" placeholder="First and last name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="number">Mobile Number:</label>
+                    <input type="tel" id="number" name="number" placeholder="Mobile Number"  required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="At least 6 characters" required>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="SignUp">
+                </div>
+            </form>
+            <div class="signup">
+                <a class="signup-btn">
+                    @Html.ActionLink("Already have an account? Log in", "Login", "Signup", new { area = "" }, new { @class = "nav-link" })
+                </a>
+            </div>
+        </div>
+    </body>
+

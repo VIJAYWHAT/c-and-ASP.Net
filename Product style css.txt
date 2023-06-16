@@ -1,0 +1,33 @@
+.sidebar {
+    width: 200px;
+    background-color: #f1f1f1;
+    padding: 10px;
+    float: left;
+}
+
+
+.product-list {
+    margin-left: 220px;
+}
+
+
+.product {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    display: flex;
+    border-bottom-width:medium;
+    border-right-width:medium;
+    cursor:pointer;
+}
+
+
+.product-image {
+    width: 150px;
+    height: 150px;
+    margin-right: 10px;
+}
+
+.product-cost {
+    font-weight: bold;
+}

@@ -1,0 +1,30 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+section {
+    padding: 20px;
+}
+
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.product {
+    flex: 0 0 48%;
+    margin: 1%;
+    background-color: #f9f9f9;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.product-img{
+    width: 130px;
+    height: 130px;
+    margin-right: 10px;
+}

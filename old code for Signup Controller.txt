@@ -1,0 +1,64 @@
+/*using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Web;
+using System.Web.Configuration;
+using System.Web.Mvc;
+using System.Web.UI;
+using WebApplication1.Models;
+
+
+namespace WebApplication1.Controllers
+{
+    public class SignupController : Controller
+    {
+        public bool IsPostBack { get; private set; }
+
+        public ActionResult Index()
+        {
+            return View("Index");
+        }
+
+        [HttpGet]
+        public ActionResult Register()
+        {
+            *//*  if (IsPostBack)
+                {
+
+                    ViewBag.Error = "Please fill in all the fields.";
+                    return View("Signup");
+                }*//*
+
+
+
+            ViewBag.Username = Request.Form["username"];
+            ViewBag.Number = Request.Form["number"];
+            ViewBag.Email = Request.Form["email"];
+            ViewBag.Password = Request.Form["password"];
+
+
+
+
+
+
+            return View("Register");
+        }
+        public ActionResult Login()
+        {
+
+
+            return View("Login");
+        }
+
+
+    }
+}
+*/
+//inside the register --v
+
+//Output the form values in the response
+/*Response.ContentType = "text/html";
+Response.Write($"Submitted Name: {Username}<br/>");
+Response.Write($"Submitted Email: {Email}<br/>");
+Response.Write($"Submitted Number: {Number}");*/

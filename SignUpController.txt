@@ -1,0 +1,143 @@
+using System.Web.Mvc;
+using WebApplication1.Models;
+
+namespace WebApplication1.Controllers
+{
+    public class SignupController : Controller
+    {
+      
+
+        public ActionResult Index()
+        {
+            return View("Index");
+        }
+
+        [HttpGet]
+        public ActionResult Register()
+        {
+            return View("Register");
+        }
+
+        [HttpPost]
+        public ActionResult Register(FormCollection form)
+        {
+            if (form["username"] == "vijaywhat")
+            {
+                if (form["password"] == "vijay.rv")
+                {
+                    ViewBag.username = form["username"];
+                    ViewBag.number = "7339480350";
+                    ViewBag.email = "crazyvj@gmail.com";
+                    return View("Register");
+                }
+                else
+                {
+                    ViewBag.Error = "Wrong Password";
+                    return View("Login");
+                }
+            }
+            else if(form["username"] == "vijay")
+            {
+                if (form["password"] == "VIJAY.RV")
+                {
+                    ViewBag.username = form["username"];
+                    ViewBag.number = "9042780350";
+                    ViewBag.email = "Vijayrv042@gmail.com";
+
+                    return View("Register");
+                }
+                else
+                {
+                    ViewBag.Error = "Wrong Password";
+                    return View("Login");
+                }
+            }
+
+            else
+            {
+                ViewBag.username = form["username"];
+                ViewBag.number = form["number"];
+                ViewBag.email = form["email"];
+                ViewBag.password = form["password"];
+
+                return View("Register");
+            }
+        }
+        public ActionResult Login()
+        {
+           
+
+            return View("Login");
+            
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*public ActionResult Verify(ProductDetails Pdt)
+   {
+       return View();
+   }
+ */
+
+/*public class LoginController : Controller
+   {
+       private readonly CustomerDbContext _db;
+
+       public LoginController(CustomerDbContext db)
+       {
+           _db = db;
+       }
+
+       public void Products()
+       {
+           var productName = _db.Product.Where(x => x.Id == 1).Select(x => x.ProductName).ToString();
+           var ImageUrl = _db.Product.Where(x => x.Id == 1).Select(x => x.ImageUrl).ToString();
+       }
+       public ActionResult Index(int rate)
+       {
+           ProductDetails pmodel = new ProductDetails();
+
+           string connectionString = "YourConnectionString";
+
+           using (SqlConnection connection = new SqlConnection(connectionString))
+           {
+               connection.Open();
+
+               string query = "SELECT ProductName, Rate FROM ProductDetails";
+               SqlCommand command = new SqlCommand(query, connection);
+               SqlDataReader reader = command.ExecuteReader();
+
+               while (reader.Read())
+               {
+                   string ProductName = reader["Name"].ToString();
+                   string Rate = reader["Email"].ToString();
+
+                   Rate = Rate.Trim();
+
+                   pmodel.ProductName = ProductName;
+                   pmodel.Price = rate;
+
+               }
+               return View("Register");
+           }
+
+
+       }
+   }*/
+
+
+
+
+

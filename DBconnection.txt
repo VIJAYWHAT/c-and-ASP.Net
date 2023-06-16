@@ -1,0 +1,88 @@
+
+//db connection string ---> web.config
+
+<connectionStrings>
+		<add name="dbconnect" connectionString="Data Source=(LocalDb)\NEWSQLSERVER;Integrated Security=true; Initial Catalog=ProductsDetails;" providerName="System.Data.SqlClient" />
+</connectionStrings>
+
+
+//first Model File ---> ProductDb.cs
+
+ public class ProductDb
+    {
+        public int Id { get; set; }
+        public string ImageUrl { get; set; }
+        public string ProductName { get; set; }
+        public string Description { get; set; }
+        public string Price { get; set; }
+        public double Rating { get; set; }
+    }
+
+// Second Model file ---> DBconnection.cs
+
+public class DBconnection
+    {
+        public List<ProductDb> DBconnect()
+        {
+            List<ProductDb> products = new List<ProductDb>();
+            string connectionstring = ConfigurationManager.ConnectionStrings["dbconnection"].ToString();
+            SqlConnection sqlConnection = new SqlConnection(connectionstring);
+            sqlConnection.Open();
+
+            string cmd1 = "USE ProductsDetails;";
+            string cmd2 = " SELECT Id,ProductName,Description,Price,Rating,ImageUrl FROM Products;";
+
+            SqlCommand sqlCommand = new SqlCommand(cmd1, sqlConnection);
+            SqlCommand sqlCommand2 = new SqlCommand(cmd2, sqlConnection);
+
+            SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+
+            while (sqlDataReader.Read())
+            {
+                products.Add(new ProductDb
+                {
+                    Id = (int)sqlDataReader["Id"],
+                    ProductName = sqlDataReader["ProductName"].ToString(),
+                    Description = sqlDataReader["Description"].ToString(),
+                    Price = sqlDataReader["Price"].ToString(),
+                    ImageUrl = sqlDataReader["ImageUrl"].ToString(),
+                    Rating = (Double)sqlDataReader["Rating"]
+                });
+            }
+
+            return products;
+
+        }
+    }
+
+//Controller ---> here home Controller
+
+public ActionResult About()
+        {
+            DBconnection obj = new DBconnection();
+
+            var values = obj.DBconnect(1);
+
+            ViewBag.Products = values;
+
+            
+
+            return View("About");
+        }
+
+
+//viewpage ---> about.cshtml
+
+@{
+var products = ViewBag.Products;
+}
+
+
+@{ 
+    foreach(var item in products)
+            {
+    
+    <h3>@item.ProductName</h3>
+            }
+    
+}

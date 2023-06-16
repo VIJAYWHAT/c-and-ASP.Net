@@ -1,0 +1,46 @@
+using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.Linq;
+using System.Web;
+
+namespace WebApplication1.Models
+{
+    public class DBconnection
+    {
+        public List<ProductDb> DBconnect(int id1,int id2)
+        {
+            List<ProductDb> products = new List<ProductDb>();
+            string connectionstring = ConfigurationManager.ConnectionStrings["dbconnection"].ToString();
+            SqlConnection sqlConnection = new SqlConnection(connectionstring);
+            sqlConnection.Open();
+
+            string cmd1 = "USE ProductsDetails;";
+            string cmd2 = "SELECT * FROM Products where id BETWEEN " + id1 + " " + "AND" + " " + id2;
+
+            SqlCommand sqlCommand = new SqlCommand(cmd1, sqlConnection);
+            SqlCommand sqlCommand2 = new SqlCommand(cmd2, sqlConnection);
+
+            SqlDataReader sqlDataReader = sqlCommand2.ExecuteReader();
+
+            while (sqlDataReader.Read())
+            {
+                products.Add(new ProductDb()
+                {
+                    Id = (int)sqlDataReader["Id"],
+                    ProductName = sqlDataReader["ProductName"].ToString(),
+                    Description = sqlDataReader["Description"].ToString(),
+                    Price = sqlDataReader["Price"].ToString(),
+                    ImageUrl = sqlDataReader["ImageUrl"].ToString(),
+                    Rating = (Double)sqlDataReader["Rating"]
+                });
+            }
+
+            return products;
+
+        }
+
+    }
+}

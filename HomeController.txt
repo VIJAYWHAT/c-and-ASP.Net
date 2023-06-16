@@ -1,0 +1,115 @@
+    using Microsoft.Ajax.Utilities;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.Remoting.Messaging;
+using System.Security.Cryptography.X509Certificates;
+using System.Web;
+using System.Web.Mvc;
+using WebApplication1.Models;
+
+namespace WebApplication1.Controllers
+{
+    public class HomeController : Controller
+    {
+        public ActionResult Index()
+        {
+            ProductsModel[] index = new ProductsModel[]
+            {
+                new ProductsModel {ImageUrl = "/Content/Image/mac-pro.png", Name = "MacBook Pro", Description = "MacBook Pro Laptop M2 Pro chip with 10‑core CPU and " +
+                "16‑core GPU: 33.74 cm (14.2-inch), 16GB Unified Memory, 512GB SSD Storage. Works with iPhone/iPad; Space Grey", Price = 199900, Rating =  10},
+                 new ProductsModel {ImageUrl = "/Content/Image/iphone14promax.png", Name = "IPhone 14 Pro Max", Description = "IPhone 14 Pro 1 TB - Gold,17.00 cm (6.7-inch) Super Retina XDR display,Dynamic Island," +
+                "48MP Main camera , 29 hours BatteryLife ,A16 Bionic, the ultimate smartphone chip. Superfast 5G cellular", Price = 182990 , Rating = 9},
+                 new ProductsModel {ImageUrl = "/Content/Image/iphone14plus.png", Name = "IPhone 14 Plus", Description = "IPhone 14 Plus 128 GB - Blue ,16.95 cm (6.7-inch) Super Retina XDR display , 12MP Main camera," +
+                "26 hours Battery Life ,A15 Bionic chip with 5-core GPU for lightning-fast performance. Superfast 5G cellular", Price = 79900 , Rating =  8},
+                  new ProductsModel {ImageUrl = "/Content/Image/airpods.png", Name = "Apple Airpods 3rd Generation", Description = "Apple AirPods (3rd Generation) with Lightning Charging Case -  White ​​​​​​​,Bluetooth 5.0", Price = 19100, Rating = 8 },
+                new ProductsModel {ImageUrl = "/Content/Image/i-pad.png", Name = "Apple ipad Pro 2022", Description = "Apple 2022 11-inch iPad Pro (Wi-Fi, 512GB) - Silver (4th Generation) ,M2 chip with 8-core CPU and 10-core GPU,12MP Wide camera", Price = 108900 ,Rating = 9},
+                new ProductsModel {ImageUrl = "/Content/Image/apple-tv.png", Name = "Apple Tv 2022 4K", Description = "2022 Apple TV 4K Wi‑Fi with 64GB Storage (3rd Generation),4K Dolby Vision and HDR10+ for vivid picture quality," +
+                "Netflix, HBO Max, Amazon Prime Video, Disney+", Price = 16900,Rating = 8},
+                new ProductsModel {ImageUrl = "/Content/Image/accessories.png", Name = "Apple Accessories", Description = "Apple AirTag, Apple MagSafe BatteryPack,Apple Pen,Apple Magic Mouse And Etc...", Price = 1500,Rating = 8}
+
+
+            };
+            return View(index);
+        }
+
+        public ActionResult About()
+        {
+            DBconnection obj = new DBconnection();
+
+            var values = obj.DBconnect(4,5);
+
+            ViewBag.Products = values;
+
+            
+
+            return View();
+        }
+
+        
+        public ActionResult Products()
+        {
+            ProductsModel[] products = new ProductsModel[]
+            {
+           
+                new ProductsModel {ImageUrl = "/Content/Image/mac-pro.png", Name = "MacBook Pro", Description = "MacBook Pro Laptop M2 Pro chip with 10‑core CPU and " +
+                "16‑core GPU: 33.74 cm (14.2-inch), 16GB Unified Memory, 512GB SSD Storage. Works with iPhone/iPad; Space Grey", Price = 199900, Rating =  10},
+                new ProductsModel {ImageUrl = "/Content/Image/mac-air.png", Name = "MacBook Air", Description = "MacBook Air Laptop with M2 chip: 34.46 cm (13.6-inch)" +
+                " Liquid Retina Display, 8GB RAM, 512GB SSD Storage, Backlit Keyboard, 1080p FaceTime HD Camera. Works with iPhone/iPad; Silver", Price = 134990 , Rating = 9},
+                new ProductsModel {ImageUrl = "/Content/Image/i-mac.png", Name = "Apple iMac 2021", Description = "iMac with 4.5K Retina Display (24-inch/60.96 cm, " +
+                "M1 chip with 8‑core CPU and 7‑core GPU, 8GB RAM, 256GB) - Green", Price = 119900 , Rating =  8}
+
+            };
+            DBconnection obj = new DBconnection();
+
+            var values = obj.DBconnect(7,10);
+
+            ViewBag.Products = values;
+
+
+            return View(products);
+            
+        }
+
+        public ActionResult Productstwo()
+        {
+            ProductsModel[] Productstwo = new ProductsModel[]
+            {
+                new ProductsModel {ImageUrl = "/Content/Image/iphone14pro.png", Name = "IPhone 14 Pro", Description = "IPhone 14 Pro 256 GB - Deep Purple,15.54 cm (6.1-inch) Super Retina XDR display,Dynamic Island," +
+                "48MP Main camera,A16 Bionic, the ultimate smartphone chip. Superfast 5G cellular ", Price = 134900, Rating =  8},
+                new ProductsModel {ImageUrl = "/Content/Image/iphone14promax.png", Name = "IPhone 14 Pro Max", Description = "IPhone 14 Pro 1 TB - Gold,17.00 cm (6.7-inch) Super Retina XDR display,Dynamic Island," +
+                "48MP Main camera , 29 hours BatteryLife ,A16 Bionic, the ultimate smartphone chip. Superfast 5G cellular", Price = 182990 , Rating = 9},
+                new ProductsModel {ImageUrl = "/Content/Image/iphone14plus.png", Name = "IPhone 14 Plus", Description = "IPhone 14 Plus 128 GB - Blue ,16.95 cm (6.7-inch) Super Retina XDR display , 12MP Main camera," +
+                "26 hours Battery Life ,A15 Bionic chip with 5-core GPU for lightning-fast performance. Superfast 5G cellular", Price = 79900 , Rating =  8},
+                new ProductsModel {ImageUrl = "/Content/Image/iphone14.png", Name = "IPhone 14", Description = "IPhone 14 128 GB - Red, 15.40 cm (6.1-inch) Super Retina XDR display, 12MP Main camera," +
+                "26 hours Battery Life, A15 Bionic chip with 5-core GPU for lightning-fast performance. Superfast 5G cellular", Price = 70990 , Rating =  8}
+            };
+
+            return View(Productstwo);
+        }
+
+        public ActionResult Productsthree()
+        {
+
+            ProductsModel[] Productsthree = new ProductsModel[]
+            {
+
+               
+                new ProductsModel {ImageUrl = "/Content/Image/i-watch.png", Name = "Apple Watch Ultra Yellow", Description = "Apple Watch Ultra  GPS + Cellular 49 mm  smart watch w/Rugged Titanium Case & Yellow Alpine Loop", Price = 83400, Rating = 8} ,
+                new ProductsModel {ImageUrl = "/Content/Image/airpods.png", Name = "Apple Airpods 3rd Generation", Description = "Apple AirPods (3rd Generation) with Lightning Charging Case -  White ​​​​​​​,Bluetooth 5.0", Price = 19100, Rating = 8 },
+                new ProductsModel {ImageUrl = "/Content/Image/i-pad.png", Name = "Apple ipad Pro 2022", Description = "Apple 2022 11-inch iPad Pro (Wi-Fi, 512GB) - Silver (4th Generation) ,M2 chip with 8-core CPU and 10-core GPU,12MP Wide camera", Price = 108900 ,Rating = 9},
+                new ProductsModel {ImageUrl = "/Content/Image/apple-tv.png", Name = "Apple Tv 2022 4K", Description = "2022 Apple TV 4K Wi‑Fi with 64GB Storage (3rd Generation),4K Dolby Vision and HDR10+ for vivid picture quality," +
+                "Netflix, HBO Max, Amazon Prime Video, Disney+", Price = 16900,Rating = 8},
+                new ProductsModel {ImageUrl = "/Content/Image/accessories.png", Name = "Apple Accessories", Description = "Apple AirTag, Apple MagSafe BatteryPack,Apple Pen,Apple Magic Mouse And Etc...", Price = 1500,Rating = 8}
+            };
+
+            ViewBag.Message = "IWatches";
+
+            return View(Productsthree);
+        }
+
+    }
+}
+
