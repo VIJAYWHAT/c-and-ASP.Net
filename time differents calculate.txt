@@ -1,0 +1,34 @@
+using System;
+
+public class Program
+{
+	public static void Main()
+	{
+		// Declare two dates
+		var prevDate = new DateTime(2023, 6, 23, 10,24,0); 
+		var today = DateTime.Now;
+		
+		Console.WriteLine("prevDate: {0}", prevDate);
+		Console.WriteLine("today: {0}", today);
+
+		//get difference of two dates
+		var diffOfDates = today - prevDate;
+		if(diffOfDates.Hours > 60){
+		Console.WriteLine("{0} Seconds Ago", diffOfDates.Seconds);
+	}
+		else if(diffOfDates.Hours < 2){
+		Console.WriteLine("{0} Minutes Ago", diffOfDates.Minutes);
+	}
+		else if(diffOfDates.Days < 2){
+		Console.WriteLine("{0} Hours Ago", diffOfDates.Hours);
+	}
+		else{
+			Console.WriteLine("Difference in Days: {0}", diffOfDates.Days);
+		}
+		
+	
+	
+
+
+	}
+}

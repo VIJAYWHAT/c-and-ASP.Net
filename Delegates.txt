@@ -1,0 +1,35 @@
+using System;
+namespace Csharp
+{
+    public class Program
+    {
+
+        public delegate void DelWelMessage(string Name);
+
+        public static void Main(string[] args)
+        {
+            DelWelMessage _DelWelMessage = new DelWelMessage(WelMessage);
+            /*_DelWelMessage();*/
+
+            Students.AddStudents("Vijay", _DelWelMessage);
+        }
+
+        public static void WelMessage(string Name)
+        {
+            Console.WriteLine("Welcome " + Name);
+        }
+
+        public class Students
+        {
+            public string Name { get; set; }
+
+            public static void AddStudents(String Name, DelWelMessage CallBack)
+            {
+                CallBack(Name);
+            }
+        }
+    }
+}
+
+/*Delegates is a type safe function Pointer
+Its holds the reference to a function*/

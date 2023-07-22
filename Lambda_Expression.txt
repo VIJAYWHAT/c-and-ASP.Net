@@ -1,0 +1,44 @@
+using Lambda_Expression;
+
+namespace Lambda_Expression
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<Country> listcountry = new List<Country>()
+            {
+                new Country() {Name = "India" , CountryCode="IN"},
+                new Country() {Name = "America" , CountryCode="USA"},
+                new Country() {Name = "Australia" , CountryCode="AUS"},
+                
+            };
+            //Medhod 1 --> Delegate
+            /*Predicate<Country> predicatecountry = new Predicate<Country>(FindCountry);
+            Country country = listcountry.Find(predicatecountry);*/
+
+            //Medhod 2 -->  Anonymous Method
+            /*Country country = listcountry.Find(delegate (Country country)
+        {
+            return country.CountryCode == "IN";
+        });*/
+
+            Country country = listcountry.Find(country => country.CountryCode == "USA");
+            Console.WriteLine(country.Name);
+
+            /*Func<Country, bool> funccountry = country => country.CountryCode == "IN";*/
+            //Below line overcome the Above Line 
+
+           int count = listcountry.Count(country => country.CountryCode == "IN");
+
+            Console.WriteLine(count);
+        }
+
+            /* public static bool FindCountry(Country country)
+              {
+                  return country.CountryCode == "IN";
+              } */
+        }
+    }
+
+//Lambda Overcome the Delegate and Anonymous Method
